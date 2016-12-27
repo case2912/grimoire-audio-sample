@@ -1,6 +1,6 @@
 gr(function() {
     const $$ = gr("#main");
-    const number = 32;
+    const number = 64;
     for (var i = 1; i <= number; i++) {
         $$("scene").append(`<mesh id="mesh-${i}" geometry="circle" color="white" scale="0.1" />`);
     }
@@ -33,7 +33,7 @@ gr(function() {
         var spectrums = new Uint8Array(analyser.frequencyBinCount);
         analyser.getByteFrequencyData(spectrums);
         for (var i = 1; i <= number; i++) {
-            $$(`#mesh-${i}`).setAttribute("position", `${i/5},${spectrums[i-1]/100},0`);
+            $$(`#mesh-${i}`).setAttribute("position", `${i/5 - 3},${spectrums[i-1]/50 - 2},0`);
         }
         animationId = requestAnimationFrame(render);
     };
